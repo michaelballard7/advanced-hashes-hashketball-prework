@@ -184,3 +184,40 @@ def big_shoe_rebounds
 end
 
 
+def most_points_scored
+  highest_score = 0
+  high_score_player = 0
+
+  game_hash.each do |team, team_data|
+
+    team_data[:players].each do |player, player_data|
+
+      if highest_score == 0 || player_data[:points] > highest_score
+        highest_score = player_data[:points]
+        high_score_player = player
+      end
+    end
+  end
+  high_score_player
+end
+
+########################### wrong #############
+def winning_team
+  ## push points to respectives teams, map and sum arrays, return team with highest total
+  counter = { }
+  
+  game_hash.each do |team, team_data|
+  
+    counter[team_data[:team_name]] = 0
+    team_data[:players].each do |player_name, player_data|
+      counter[team_data[:team_name]] += player_data[:points]
+    end
+  end
+  
+  if counter["Brooklyn Nets"] > counter["Charlotte Hornets"]
+    return "Brooklyn Nets"
+  else
+    "Charlotte Hornets"
+  end
+end
+
