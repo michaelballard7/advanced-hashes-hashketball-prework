@@ -155,7 +155,7 @@ def player_numbers(team_name)
       team_data[:players].each {|player, player_data| numbers << player_data[:number]}
     end
   end
-  numbers
+  numbers.skip_before_filter
 end
 
 def player_stats(player_name)
